@@ -1,9 +1,30 @@
 from saklob.utos.utos import Utos
 
+MAX_SAY_ARGUMENT_LENGTH = 32
 
 def lumikha_core_utos(makina):
     def sabihin(argumento):
-        print(makina.mensahe("say"))
+        if not argumento:
+            print(makina.mensahe("say"))
+            return
+
+        teksto = " ".join(argumento)
+
+        if len(teksto) > MAX_SAY_ARGUMENT_LENGTH:
+            print(
+                makina.mensahe(
+                    "say_argument_too_long",
+                    maximum=MAX_SAY_ARGUMENT_LENGTH
+                )
+            )
+            return
+
+        print(
+            makina.mensahe(
+                "say_with_argument",
+                argumento=teksto
+            )
+        )
 
     def bersiyon(argumento):
         print(makina.mensahe("version"))

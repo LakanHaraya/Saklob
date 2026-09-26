@@ -45,5 +45,11 @@ MGA_MENSAHE = {
     ),
 
     "say": "Kumusta mula sa Saklob!",
+    "say_with_argument": "Kumusta, {argumento}!",
+    "say_argument_too_long": (
+        "Masyadong mahaba ang argumento. "
+        "Ang maximum ay {maximum} characters."
+    ),
+
     "version": "Saklob v0.1.0",
 }

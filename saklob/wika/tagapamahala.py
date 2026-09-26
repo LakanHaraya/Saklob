@@ -36,10 +36,17 @@ class TagapamahalaWika:
         self.locale = locale
         self.resource = MGA_RESOURCE[locale]
 
+        self.fallback = MGA_RESOURCE["filipino"]
+
     def buuin_bokabularyo(self):
         bokabularyo = Bokabularyo()
 
-        for command_id, metadata in self.resource["utos"].MGA_UTOS.items():
+        mga_utos = self.fallback["utos"].MGA_UTOS.copy()
+        mga_utos.update(
+            self.resource["utos"].MGA_UTOS
+        )
+
+        for command_id, metadata in mga_utos.items():
             bokabularyo.idagdag(
                 metadata["name"],
                 command_id
@@ -48,12 +55,26 @@ class TagapamahalaWika:
         return bokabularyo
 
     def kunin_utos(self, command_id):
-        return self.resource["utos"].MGA_UTOS.get(
+        metadata = self.resource["utos"].MGA_UTOS.get(
+            command_id
+        )
+
+        if metadata is not None:
+            return metadata
+
+        return self.fallback["utos"].MGA_UTOS.get(
             command_id
         )
 
     def kunin_mensahe(self, susi):
-        return self.resource["mensahe"].MGA_MENSAHE.get(
+        mensahe = self.resource["mensahe"].MGA_MENSAHE.get(
+            susi
+        )
+
+        if mensahe is not None:
+            return mensahe
+
+        return self.fallback["mensahe"].MGA_MENSAHE.get(
             susi
         )
 

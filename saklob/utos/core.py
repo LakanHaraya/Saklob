@@ -1,0 +1,76 @@
+from saklob.utos.utos import Utos
+
+
+def lumikha_core_utos(makina):
+    def sabihin(argumento):
+        print(makina.mensahe("say"))
+
+    def bersiyon(argumento):
+        print(makina.mensahe("version"))
+
+    def tulong(argumento):
+        makina.tulong.ipakita(argumento)
+
+    def labas(argumento):
+        makina.tumatakbo = False
+        print(makina.mensahe("goodbye"))
+
+    def pasok(argumento):
+        if len(argumento) != 1:
+            print(
+                makina.mensahe(
+                    "enter_context_usage"
+                )
+            )
+            return
+
+        kasalukuyan = str(makina.sesyon.konteksto)
+
+        mga_papasukan = makina.konteksto_rehistro.mga_papasukan(
+            kasalukuyan
+        )
+
+        if argumento[0] not in mga_papasukan:
+            print(
+                makina.mensahe(
+                    "context_unavailable",
+                    konteksto=argumento[0],
+                    kasalukuyan=kasalukuyan
+                )
+            )
+            return
+
+        makina.sesyon.pasok(argumento[0])
+
+    def balik(argumento):
+        makina.sesyon.balik()
+
+    def tulong_pasok(konteksto):
+        mga_papasukan = makina.konteksto_rehistro.mga_papasukan(
+            konteksto
+        )
+
+        if not mga_papasukan:
+            return [
+                makina.mensahe(
+                    "no_child_context"
+                )
+            ]
+
+        return [
+            f"  {pangalan}"
+            for pangalan in mga_papasukan
+        ]
+
+    return [
+        Utos("SAY", sabihin),
+        Utos("VERSION", bersiyon),
+        Utos("HELP", tulong),
+        Utos(
+            "ENTER_CONTEXT",
+            pasok,
+            provider_tulong=tulong_pasok
+        ),
+        Utos("EXIT_CONTEXT", balik),
+        Utos("EXIT", labas),
+    ]

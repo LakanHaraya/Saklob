@@ -105,6 +105,7 @@ def lumikha_core_utos(makina):
         Utos(
             "ENTER_CONTEXT",
             pasok,
+            mga_mode=["normal"],
             provider_tulong=tulong_pasok
         ),
         Utos("EXIT_CONTEXT", balik),

@@ -64,6 +64,10 @@ def lumikha_core_utos(makina):
         makina.sesyon.pasok(argumento[0])
 
     def balik(argumento):
+        if makina.sesyon.mode == "kumpigurasyon":
+            makina.sesyon.mode = "normal"
+            return
+
         makina.sesyon.balik()
 
     def tulong_pasok(konteksto):
@@ -83,6 +87,17 @@ def lumikha_core_utos(makina):
             for pangalan in mga_papasukan
         ]
 
+    def kumpigurahin(argumento):
+        if argumento:
+            print(
+                makina.mensahe(
+                    "configure_usage"
+                )
+            )
+            return
+
+        makina.sesyon.mode = "kumpigurasyon"
+
     return [
         Utos("SAY", sabihin),
         Utos("VERSION", bersiyon),
@@ -94,4 +109,9 @@ def lumikha_core_utos(makina):
         ),
         Utos("EXIT_CONTEXT", balik),
         Utos("EXIT", labas),
+        Utos(
+            "CONFIGURE",
+            kumpigurahin,
+            mga_mode=["normal"]
+        ),
     ]

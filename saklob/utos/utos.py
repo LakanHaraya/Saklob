@@ -4,11 +4,13 @@ class Utos:
         id,
         handler,
         mga_konteksto=None,
+        mga_mode=None,
         provider_tulong=None
     ):
         self.id = id
         self.handler = handler
         self.mga_konteksto = mga_konteksto
+        self.mga_mode = mga_mode
         self.provider_tulong = provider_tulong
 
     def magagamit_sa(self, konteksto):
@@ -16,6 +18,12 @@ class Utos:
             return True
 
         return konteksto in self.mga_konteksto
+
+    def magagamit_sa_mode(self, mode):
+        if self.mga_mode is None:
+            return True
+
+        return mode in self.mga_mode
 
     def isagawa(self, argumento=None):
         if argumento is None:

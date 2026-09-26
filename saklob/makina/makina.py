@@ -70,6 +70,18 @@ class Makina:
             )
             return
 
+        mode = self.sesyon.mode
+
+        if not utos.magagamit_sa_mode(mode):
+            print(
+                self.mensahe(
+                    "command_unavailable_mode",
+                    pangalan=command.pangalan,
+                    mode=mode
+                )
+            )
+            return
+
         utos.isagawa(command.argumento)
 
     def kunin_utos(self, pangalan):

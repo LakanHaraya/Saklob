@@ -25,4 +25,8 @@ MGA_UTOS = {
         "name": "labas",
         "description": "Lumabas sa Saklob.",
     },
+    "CONFIGURE": {
+        "name": "kumpigurahin",
+        "description": "Pumasok sa mode ng kumpigurasyon.",
+    },
 }

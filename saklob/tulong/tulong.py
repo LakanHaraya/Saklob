@@ -48,7 +48,10 @@ class Tulong:
             )
         )
 
-        for utos in self.makina.rehistro.mga_magagamit(konteksto):
+        for utos in self.makina.rehistro.mga_magagamit(
+            konteksto,
+            self.makina.sesyon.mode
+        ):
             metadata = self.makina.kunin_utos_metadata(
                 utos.id
             )
@@ -79,6 +82,18 @@ class Tulong:
                     "command_unavailable",
                     pangalan=pangalan,
                     konteksto=konteksto
+                )
+            )
+            return
+
+        if not utos.magagamit_sa_mode(
+            self.makina.sesyon.mode
+        ):
+            print(
+                self.makina.mensahe(
+                    "command_unavailable_mode",
+                    pangalan=pangalan,
+                    mode=self.makina.sesyon.mode
                 )
             )
             return
@@ -124,6 +139,18 @@ class Tulong:
                     "command_unavailable",
                     pangalan=pangalan,
                     konteksto=konteksto
+                )
+            )
+            return
+
+        if not utos.magagamit_sa_mode(
+            self.makina.sesyon.mode
+        ):
+            print(
+                self.makina.mensahe(
+                    "command_unavailable_mode",
+                    pangalan=pangalan,
+                    mode=self.makina.sesyon.mode
                 )
             )
             return

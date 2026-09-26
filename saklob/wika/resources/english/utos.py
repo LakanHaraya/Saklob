@@ -25,4 +25,8 @@ MGA_UTOS = {
         "name": "exit",
         "description": "Exit Saklob.",
     },
+    "CONFIGURE": {
+        "name": "configure",
+        "description": "Enter configuration mode.",
+    },
 }

@@ -11,6 +11,10 @@ MGA_MENSAHE = {
         "Command '{pangalan}' is not available "
         "in context '{konteksto}'."
     ),
+    "command_unavailable_mode": (
+        "The command '{pangalan}' cannot be used "
+        "in mode '{mode}'."
+    ),
 
     "help_usage": "Usage: help [command]",
 
@@ -47,5 +51,13 @@ MGA_MENSAHE = {
     ),
 
     "say": "Hello from Saklob!",
+    "say_with_argument": "Hello, {argumento}!",
+    "say_argument_too_long": (
+        "The argument is too long. "
+        "The maximum is {maximum} characters."
+    ),
+
     "version": "Saklob v0.1.0",
+
+    "configure_usage": "...",
 }

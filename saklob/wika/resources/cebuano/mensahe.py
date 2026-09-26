@@ -11,6 +11,10 @@ MGA_MENSAHE = {
         "Ang sugo nga '{pangalan}' dili magamit "
         "sa konteksto nga '{konteksto}'."
     ),
+    "command_unavailable_mode": (
+        "Dili magamit ang sugo nga '{pangalan}' "
+        "sa mode nga '{mode}'."
+    ),
 
     "help_usage": "Paggamit: tabang [sugo]",
 
@@ -47,5 +51,13 @@ MGA_MENSAHE = {
     ),
 
     "say": "Kumusta gikan sa Saklob!",
+    "say_with_argument": "Kumusta! {argumento}",
+    "say_argument_too_long": (
+        "Taas ra kaayo ang argumento. "
+        "Ang kinadak-an kay {maximum} ka karakter."
+    ),
+
     "version": "Saklob v0.1.0",
+
+    "configure_usage": "...",
 }

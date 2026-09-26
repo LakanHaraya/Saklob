@@ -3,4 +3,7 @@ class Prompt:
         self.sesyon = sesyon
 
     def buuin(self):
+        if self.sesyon.mode == "kumpigurasyon":
+            return "saklob(kumpig)# "
+
         return f"{self.sesyon.konteksto}> "

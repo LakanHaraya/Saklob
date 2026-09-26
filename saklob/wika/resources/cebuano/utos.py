@@ -25,4 +25,8 @@ MGA_UTOS = {
         "name": "gawas",
         "description": "Gawas sa Saklob.",
     },
+    # "CONFIGURE": {
+    #     "name": "...",
+    #     "description": "...",
+    # },
 }

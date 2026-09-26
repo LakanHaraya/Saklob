@@ -11,6 +11,10 @@ MGA_MENSAHE = {
         "Utos '{pangalan}' ay hindi magagamit "
         "sa konteksto '{konteksto}'."
     ),
+    "command_unavailable_mode": (
+        "Hindi maaaring gamitin ang utos '{pangalan}' "
+        "sa mode na '{mode}'."
+    ),
 
     "help_usage": "Gamit: tulong [utos]",
 
@@ -48,8 +52,10 @@ MGA_MENSAHE = {
     "say_with_argument": "Kumusta, {argumento}!",
     "say_argument_too_long": (
         "Masyadong mahaba ang argumento. "
-        "Ang maximum ay {maximum} characters."
+        "Ang maximum ay {maximum} na karakter."
     ),
 
     "version": "Saklob v0.1.0",
+
+    "configure_usage": "Ang 'kumpigurahin' ay walang argumento.",
 }

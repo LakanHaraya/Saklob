@@ -26,16 +26,3 @@ MGA_UTOS = {
         "description": "Exit Saklob.",
     },
 }
-
-
-def irehistro(bokabularyo):
-    bokabularyo.idagdag("say", "SAY")
-    bokabularyo.idagdag("version", "VERSION")
-    bokabularyo.idagdag("help", "HELP")
-    bokabularyo.idagdag("enter", "ENTER_CONTEXT")
-    bokabularyo.idagdag("back", "EXIT_CONTEXT")
-    bokabularyo.idagdag("exit", "EXIT")
-
-
-def kunin_utos(command_id):
-    return MGA_UTOS.get(command_id)

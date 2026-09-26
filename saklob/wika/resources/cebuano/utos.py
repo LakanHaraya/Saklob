@@ -26,16 +26,3 @@ MGA_UTOS = {
         "description": "Gawas sa Saklob.",
     },
 }
-
-
-def irehistro(bokabularyo):
-    bokabularyo.idagdag("ingon", "SAY")
-    bokabularyo.idagdag("bersiyon", "VERSION")
-    bokabularyo.idagdag("tabang", "HELP")
-    bokabularyo.idagdag("sulod", "ENTER_CONTEXT")
-    bokabularyo.idagdag("balik", "EXIT_CONTEXT")
-    bokabularyo.idagdag("gawas", "EXIT")
-
-
-def kunin_utos(command_id):
-    return MGA_UTOS.get(command_id)

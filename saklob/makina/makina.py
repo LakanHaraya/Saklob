@@ -4,6 +4,7 @@ from saklob.utos.parser import Parser
 from saklob.tulong.tulong import Tulong
 from saklob.tulong.kahilingan import HelpRequest
 from saklob.makina.konteksto_rehistro import KontekstoRehistro
+from saklob.config.kumpigurasyon import Kumpigurasyon
 
 from saklob.wika.setting import DEFAULT_LOCALE
 from saklob.wika.tagapamahala import TagapamahalaWika
@@ -12,9 +13,10 @@ from saklob.wika.tagapamahala import TagapamahalaWika
 
 
 class Makina:
-    def __init__(self, sesyon, locale=None):
+    def __init__(self, sesyon, locale=None, config=None):
         self.sesyon = sesyon
         self.tumatakbo = True
+        self.config = config or Kumpigurasyon()
 
         self.rehistro = Rehistro()
         self.parser = Parser()
@@ -82,6 +84,21 @@ class Makina:
             )
             return
 
+        if utos.malayang_input:
+            if not self.tanggap_ang_malayang_input(
+                command.argumento
+            ):
+                print(
+                    self.mensahe(
+                        "free_form_input_too_long",
+                        maximum=(
+                            self.config
+                            .kunin_tumatakbo_free_form_input_length()
+                        )
+                    )
+                )
+                return
+
         utos.isagawa(command.argumento)
 
     def kunin_utos(self, pangalan):
@@ -94,6 +111,16 @@ class Makina:
 
     def kunin_utos_metadata(self, command_id):
         return self.tagapamahala_wika.kunin_utos(command_id)
+
+    def haba_malayang_input(self, argumento):
+        teksto = " ".join(argumento)
+        return len(teksto)
+
+    def tanggap_ang_malayang_input(self, argumento):
+        return (
+            self.haba_malayang_input(argumento)
+            <= self.config.kunin_tumatakbo_free_form_input_length()
+        )
 
     def mensahe(self, susi, **halaga):
         teksto = self.tagapamahala_wika.kunin_mensahe(

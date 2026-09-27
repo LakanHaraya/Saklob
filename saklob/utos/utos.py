@@ -5,13 +5,15 @@ class Utos:
         handler,
         mga_konteksto=None,
         mga_mode=None,
-        provider_tulong=None
+        provider_tulong=None,
+        malayang_input=False
     ):
         self.id = id
         self.handler = handler
         self.mga_konteksto = mga_konteksto
         self.mga_mode = mga_mode
         self.provider_tulong = provider_tulong
+        self.malayang_input = malayang_input
 
     def magagamit_sa(self, konteksto):
         if self.mga_konteksto is None:

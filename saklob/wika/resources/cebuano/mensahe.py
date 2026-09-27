@@ -60,4 +60,9 @@ MGA_MENSAHE = {
     "version": "Saklob v0.1.0",
 
     "configure_usage": "...",
+
+    # "input_too_long": (
+    #     "Masyadong mahaba ang input. "
+    #     "Pinakamahabang pinapahintulutang haba: {maximum}."
+    # ),
 }

@@ -29,4 +29,16 @@ MGA_UTOS = {
         "name": "kumpigurahin",
         "description": "Pumasok sa mode ng kumpigurasyon.",
     },
+    "INPUT_LENGTH": {
+        "name": "haba",
+        "description": "Ipakita o itakda ang haba ng input.",
+    },
+    "WRITE_CONFIG": {
+        "name": "isulat",
+        "description": "Isulat ang panimulang kumpigurasyon sa imbakan.",
+    },
+    "SHOW": {
+        "name": "ipakita",
+        "description": "Ipakita ang impormasyon tungkol sa Saklob.",
+    },
 }

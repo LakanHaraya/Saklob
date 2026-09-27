@@ -1,0 +1,16 @@
+MAX_CLI_INPUT_LENGTH = 128
+
+MIN_FREE_FORM_INPUT_LENGTH = 8
+FREE_FORM_INPUT_LENGTH = 32
+MAX_FREE_FORM_INPUT_LENGTH = 128
+
+
+if not (
+    MIN_FREE_FORM_INPUT_LENGTH
+    <= FREE_FORM_INPUT_LENGTH
+    <= MAX_FREE_FORM_INPUT_LENGTH
+):
+    raise ValueError(
+        "FREE_FORM_INPUT_LENGTH ay wala sa "
+        "pinapahintulutang saklaw."
+    )

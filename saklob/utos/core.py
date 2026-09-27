@@ -1,7 +1,5 @@
 from saklob.utos.utos import Utos
 
-MAX_SAY_ARGUMENT_LENGTH = 32
-
 def lumikha_core_utos(makina):
     def sabihin(argumento):
         if not argumento:
@@ -9,15 +7,6 @@ def lumikha_core_utos(makina):
             return
 
         teksto = " ".join(argumento)
-
-        if len(teksto) > MAX_SAY_ARGUMENT_LENGTH:
-            print(
-                makina.mensahe(
-                    "say_argument_too_long",
-                    maximum=MAX_SAY_ARGUMENT_LENGTH
-                )
-            )
-            return
 
         print(
             makina.mensahe(
@@ -98,8 +87,131 @@ def lumikha_core_utos(makina):
 
         makina.sesyon.mode = "kumpigurasyon"
 
+    def haba(argumento):
+        if not argumento:
+            print(
+                f"FREE_FORM_INPUT_LENGTH: "
+                f"{makina.config.kunin_panimula_free_form_input_length()}"
+            )
+            return
+
+        if len(argumento) != 1:
+            print(
+                "Gamit: haba <halaga>"
+            )
+            return
+
+        try:
+            halaga = int(argumento[0])
+        except ValueError:
+            print(
+                "Ang haba ay dapat isang buong bilang."
+            )
+            return
+
+        try:
+            makina.config.itakda_panimula_free_form_input_length(
+                halaga
+            )
+        except ValueError:
+            print(
+                "FREE_FORM_INPUT_LENGTH ay wala sa "
+                "pinapahintulutang saklaw."
+            )
+            return
+
+        print(
+            f"FREE_FORM_INPUT_LENGTH: "
+            f"{makina.config.kunin_panimula_free_form_input_length()}"
+        )
+    
+    def isulat(argumento):
+        if argumento:
+            print(
+                "Gamit: isulat"
+            )
+            return
+
+        makina.config.ilagak()
+
+        print(
+            "Naisulat ang panimulang kumpigurasyon."
+        )
+
+    def ipakita(argumento):
+        if len(argumento) != 2:
+            print(
+                "Gamit: ipakita kumpigurasyon "
+                "<tumatakbo|panimula|nakasulat|lahat>"
+            )
+            return
+
+        if argumento[0] != "kumpigurasyon":
+            print(
+                f"Walang impormasyon para sa "
+                f"'{argumento[0]}'."
+            )
+            return
+
+        estado = argumento[1]
+
+        if estado == "tumatakbo":
+            print("Kumpigurasyon:")
+            print(
+                f"  FREE_FORM_INPUT_LENGTH: "
+                f"{makina.config.kunin_tumatakbo_free_form_input_length()}"
+            )
+            return
+
+        if estado == "panimula":
+            print("Kumpigurasyon:")
+            print(
+                f"  FREE_FORM_INPUT_LENGTH: "
+                f"{makina.config.kunin_panimula_free_form_input_length()}"
+            )
+            return
+
+        if estado == "nakasulat":
+            print("Kumpigurasyon:")
+            print(
+                f"  FREE_FORM_INPUT_LENGTH: "
+                f"{makina.config.kunin_nakasulat_free_form_input_length()}"
+            )
+            return
+
+        if estado == "lahat":
+            print("Kumpigurasyon:")
+
+            print("  Tumatakbo:")
+            print(
+                f"    FREE_FORM_INPUT_LENGTH: "
+                f"{makina.config.kunin_tumatakbo_free_form_input_length()}"
+            )
+
+            print("  Panimula:")
+            print(
+                f"    FREE_FORM_INPUT_LENGTH: "
+                f"{makina.config.kunin_panimula_free_form_input_length()}"
+            )
+
+            print("  Nakasulat:")
+            print(
+                f"    FREE_FORM_INPUT_LENGTH: "
+                f"{makina.config.kunin_nakasulat_free_form_input_length()}"
+            )
+            return
+
+        print(
+            f"Walang impormasyon para sa "
+            f"'{estado}'."
+        )
+
     return [
-        Utos("SAY", sabihin),
+        Utos(
+            "SAY",
+            sabihin,
+            malayang_input=True
+        ),
         Utos("VERSION", bersiyon),
         Utos("HELP", tulong),
         Utos(
@@ -114,5 +226,20 @@ def lumikha_core_utos(makina):
             "CONFIGURE",
             kumpigurahin,
             mga_mode=["normal"]
+        ),
+        Utos(
+            "INPUT_LENGTH",
+            haba,
+            mga_mode=["kumpigurasyon"]
+        ),
+        Utos(
+            "WRITE_CONFIG",
+            isulat,
+            mga_mode=["kumpigurasyon"]
+        ),
+        Utos(
+            "SHOW",
+            ipakita,
+            mga_mode=["kumpigurasyon"]
         ),
     ]

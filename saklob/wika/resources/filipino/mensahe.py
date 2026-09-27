@@ -58,4 +58,13 @@ MGA_MENSAHE = {
     "version": "Saklob v0.1.0",
 
     "configure_usage": "Ang 'kumpigurahin' ay walang argumento.",
+
+    "input_too_long": (
+        "Masyadong mahaba ang input. "
+        "Pinakamahabang pinapahintulutang haba: {maximum}."
+    ),
+    "free_form_input_too_long": (
+        "Masyadong mahaba ang free-form input. "
+        "Pinakamahabang pinapahintulutang haba: {maximum}."
+    ),
 }

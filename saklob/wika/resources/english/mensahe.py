@@ -60,4 +60,9 @@ MGA_MENSAHE = {
     "version": "Saklob v0.1.0",
 
     "configure_usage": "...",
+
+    "input_too_long": (
+        "The input is too long. "
+        "The maximum length is {maximum} characters."
+    ),
 }

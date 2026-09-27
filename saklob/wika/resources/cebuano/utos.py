@@ -29,4 +29,12 @@ MGA_UTOS = {
     #     "name": "...",
     #     "description": "...",
     # },
+    # "INPUT_LENGTH": {
+    #     "name": "...",
+    #     "description": "...",
+    # },
+    # "INPUT_LENGTH_SET": {
+    #     "name": "...",
+    #     "description": "...",
+    # },
 }

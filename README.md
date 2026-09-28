@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-    <strong>Personal at eksperimental na command environment para sa maliliit at nakaembed na sistema.</strong>
+    <strong>Pagtatangkang gumawa ng maliit at disenteng kaligirang pang-utos.</strong>
 </p>
 
 ## Talaan ng Nilalaman
@@ -30,7 +30,7 @@
 
 ## Ano ang Saklob
 
-Saklob (SKLB) ay isang personal at eksperimental na command environment na ginagawa para sa maliliit at naka-embed na sistema.
+Ang Saklob (SKLB) ay isang personal at eksperimental na command environment na ginagawa para sa maliliit at naka-embed na sistema.
 
 Nagsimula ito sa isang simpleng tanong:
 

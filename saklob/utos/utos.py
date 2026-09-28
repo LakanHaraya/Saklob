@@ -6,7 +6,8 @@ class Utos:
         mga_konteksto=None,
         mga_mode=None,
         provider_tulong=None,
-        malayang_input=False
+        malayang_input=False,
+        kailangan_magulang=False
     ):
         self.id = id
         self.handler = handler
@@ -14,6 +15,7 @@ class Utos:
         self.mga_mode = mga_mode
         self.provider_tulong = provider_tulong
         self.malayang_input = malayang_input
+        self.kailangan_magulang = kailangan_magulang
 
     def magagamit_sa(self, konteksto):
         if self.mga_konteksto is None:

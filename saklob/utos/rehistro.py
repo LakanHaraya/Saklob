@@ -14,12 +14,21 @@ class Rehistro:
     def mga_id(self):
         return list(self._ayon_sa_id.keys())
 
-    def mga_magagamit(self, konteksto, mode=None):
+    def mga_magagamit(
+        self,
+        konteksto,
+        mode=None,
+        may_magulang=False
+    ):
         return [
             utos
             for utos in self._ayon_sa_id.values()
             if (
                 utos.magagamit_sa(konteksto)
                 and utos.magagamit_sa_mode(mode)
+                and (
+                    not utos.kailangan_magulang
+                    or may_magulang
+                )
             )
         ]

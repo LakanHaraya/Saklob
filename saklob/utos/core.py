@@ -220,7 +220,11 @@ def lumikha_core_utos(makina):
             mga_mode=["normal"],
             provider_tulong=tulong_pasok
         ),
-        Utos("EXIT_CONTEXT", balik),
+        Utos(
+            "EXIT_CONTEXT",
+            balik,
+            kailangan_magulang=True
+        ),
         Utos("EXIT", labas),
         Utos(
             "CONFIGURE",

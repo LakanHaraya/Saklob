@@ -60,14 +60,27 @@ class Makina:
             )
             return
 
-        konteksto = str(self.sesyon.konteksto)
+        konteksto = self.sesyon.konteksto
 
-        if not utos.magagamit_sa(konteksto):
+        if not utos.magagamit_sa(str(konteksto)):
             print(
                 self.mensahe(
                     "command_unavailable",
                     pangalan=command.pangalan,
-                    konteksto=konteksto
+                    konteksto=str(konteksto)
+                )
+            )
+            return
+
+        if (
+            utos.kailangan_magulang
+            and konteksto.magulang is None
+        ):
+            print(
+                self.mensahe(
+                    "command_unavailable",
+                    pangalan=command.pangalan,
+                    konteksto=str(konteksto)
                 )
             )
             return

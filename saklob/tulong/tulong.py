@@ -50,7 +50,8 @@ class Tulong:
 
         for utos in self.makina.rehistro.mga_magagamit(
             konteksto,
-            self.makina.sesyon.mode
+            self.makina.sesyon.mode,
+            self.makina.sesyon.konteksto.magulang is not None
         ):
             metadata = self.makina.kunin_utos_metadata(
                 utos.id

@@ -99,6 +99,20 @@ class Tulong:
             )
             return
 
+        if (
+            utos.kailangan_magulang
+            and self.makina.sesyon.mode == "normal"
+            and self.makina.sesyon.konteksto.magulang is None
+        ):
+            print(
+                self.makina.mensahe(
+                    "command_unavailable",
+                    pangalan=pangalan,
+                    konteksto=konteksto
+                )
+            )
+            return
+
         metadata = self.makina.kunin_utos_metadata(
             utos.id
         )
@@ -152,6 +166,20 @@ class Tulong:
                     "command_unavailable_mode",
                     pangalan=pangalan,
                     mode=self.makina.sesyon.mode
+                )
+            )
+            return
+
+        if (
+            utos.kailangan_magulang
+            and self.makina.sesyon.mode == "normal"
+            and self.makina.sesyon.konteksto.magulang is None
+        ):
+            print(
+                self.makina.mensahe(
+                    "command_unavailable",
+                    pangalan=pangalan,
+                    konteksto=konteksto
                 )
             )
             return

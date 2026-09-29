@@ -9,7 +9,7 @@ from saklob.config.kumpigurasyon import Kumpigurasyon
 from saklob.wika.setting import DEFAULT_LOCALE
 from saklob.wika.tagapamahala import TagapamahalaWika
 
-# from saklob.lndh import irehistro_lndh
+from saklob.lndh import irehistro_lndh      # pansamantala
 
 
 class Makina:
@@ -32,7 +32,7 @@ class Makina:
         )
 
         self.konteksto_rehistro = KontekstoRehistro()
-        # irehistro_lndh(self.konteksto_rehistro)
+        irehistro_lndh(self.konteksto_rehistro)     # pansamantala
 
         self.tulong = Tulong(self)
 
@@ -61,6 +61,7 @@ class Makina:
             return
 
         konteksto = self.sesyon.konteksto
+        mode = self.sesyon.mode
 
         if not utos.magagamit_sa(str(konteksto)):
             print(
@@ -74,6 +75,7 @@ class Makina:
 
         if (
             utos.kailangan_magulang
+            and mode == "normal"
             and konteksto.magulang is None
         ):
             print(
@@ -84,8 +86,6 @@ class Makina:
                 )
             )
             return
-
-        mode = self.sesyon.mode
 
         if not utos.magagamit_sa_mode(mode):
             print(

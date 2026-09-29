@@ -28,6 +28,7 @@ class Rehistro:
                 and utos.magagamit_sa_mode(mode)
                 and (
                     not utos.kailangan_magulang
+                    or mode != "normal"
                     or may_magulang
                 )
             )

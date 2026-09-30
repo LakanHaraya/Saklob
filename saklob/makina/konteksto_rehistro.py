@@ -4,6 +4,8 @@ class KontekstoRehistro:
             "saklob": []
         }
 
+        self._mga_deskripsiyon = {}
+
     def mga_papasukan(self, konteksto):
         return self._mga_konteksto.get(konteksto, [])
 
@@ -16,3 +18,9 @@ class KontekstoRehistro:
 
         if anak not in self._mga_konteksto[konteksto]:
             self._mga_konteksto[konteksto].append(anak)
+
+    def itakda_deskripsiyon(self, konteksto, deskripsiyon):
+        self._mga_deskripsiyon[konteksto] = deskripsiyon
+
+    def kunin_deskripsiyon(self, konteksto):
+        return self._mga_deskripsiyon.get(konteksto)

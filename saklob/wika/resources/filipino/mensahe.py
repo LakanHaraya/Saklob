@@ -32,7 +32,7 @@ MGA_MENSAHE = {
 
     "no_argument_help": (
         "Walang karagdagang impormasyon "
-        "sa argumento para sa '{pangalan}'."
+        "para sa '{pangalan}'."
     ),
 
     "enter_context_usage": (
@@ -45,7 +45,10 @@ MGA_MENSAHE = {
     ),
 
     "no_child_context": (
-        "Walang available na child context."
+        "Walang child context na maaaring pasukan."
+    ),
+    "available_child_contexts": (
+        "Mga child context na maaaring pasukan:"
     ),
 
     "say": "Kumusta mula sa Saklob!",

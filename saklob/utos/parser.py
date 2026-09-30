@@ -24,7 +24,7 @@ class Parser:
         if mga_salita[-1] == "?":
             return HelpRequest(
                 HelpRequest.ARGUMENT,
-                mga_salita[0]
+                " ".join(mga_salita[:-1])
             )
 
         pangalan = mga_salita[0]

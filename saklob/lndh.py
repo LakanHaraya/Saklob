@@ -23,3 +23,23 @@ def irehistro_lndh(konteksto_rehistro):
         "saklob:dron:kom:radyo",
         []
     )
+
+    konteksto_rehistro.itakda_deskripsiyon(
+        "saklob:dron",
+        "LNDH dron."
+    )
+
+    konteksto_rehistro.itakda_deskripsiyon(
+        "saklob:dron:kom",
+        "Komunikasyon ng dron."
+    )
+
+    konteksto_rehistro.itakda_deskripsiyon(
+        "saklob:dron:masid",
+        "Pagmamasid ng dron."
+    )
+
+    konteksto_rehistro.itakda_deskripsiyon(
+        "saklob:dron:kom:radyo",
+        "Radyo ng komunikasyon."
+    )

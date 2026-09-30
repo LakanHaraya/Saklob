@@ -160,13 +160,20 @@ class Tulong:
             )
 
     def _ipakita_argumento(self, pangalan, konteksto):
-        utos = self.makina.kunin_utos(pangalan)
+        mga_salita = pangalan.split()
+
+        pangalan_utos = mga_salita[0]
+        mga_argumento = mga_salita[1:]
+
+        utos = self.makina.kunin_utos(
+            pangalan_utos
+        )
 
         if utos is None:
             print(
                 self.makina.mensahe(
                     "unknown_command",
-                    pangalan=pangalan
+                    pangalan=pangalan_utos
                 )
             )
             return
@@ -175,7 +182,7 @@ class Tulong:
             print(
                 self.makina.mensahe(
                     "command_unavailable",
-                    pangalan=pangalan,
+                    pangalan=pangalan_utos,
                     konteksto=konteksto
                 )
             )
@@ -187,7 +194,7 @@ class Tulong:
             print(
                 self.makina.mensahe(
                     "command_unavailable_mode",
-                    pangalan=pangalan,
+                    pangalan=pangalan_utos,
                     mode=self.makina.sesyon.mode
                 )
             )
@@ -201,7 +208,7 @@ class Tulong:
             print(
                 self.makina.mensahe(
                     "command_unavailable",
-                    pangalan=pangalan,
+                    pangalan=pangalan_utos,
                     konteksto=konteksto
                 )
             )
@@ -214,15 +221,17 @@ class Tulong:
         if metadata is None:
             return
 
-        if utos.provider_tulong:
-            mga_linya = utos.provider_tulong(konteksto)
+        if utos.provider_tulong and not mga_argumento:
+            mga_linya = utos.provider_tulong(
+                konteksto
+            )
 
             for linya in mga_linya:
                 print(linya)
 
             return
 
-        if metadata.get("usage"):
+        if metadata.get("usage") and not mga_argumento:
             print(
                 self.makina.mensahe("help_usage_label")
                 + f" {metadata['usage']}"
@@ -232,6 +241,6 @@ class Tulong:
         print(
             self.makina.mensahe(
                 "no_argument_help",
-                pangalan=metadata["name"]
+                pangalan=pangalan
             )
         )

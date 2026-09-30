@@ -71,10 +71,33 @@ def lumikha_core_utos(makina):
                 )
             ]
 
-        return [
-            f"  {pangalan}"
-            for pangalan in mga_papasukan
+        mga_linya = [
+            makina.mensahe(
+                "available_child_contexts"
+            )
         ]
+
+        for pangalan in mga_papasukan:
+            buong_konteksto = (
+                f"{konteksto}:{pangalan}"
+            )
+
+            deskripsiyon = (
+                makina.konteksto_rehistro
+                .kunin_deskripsiyon(buong_konteksto)
+            )
+
+            if deskripsiyon is None:
+                mga_linya.append(
+                    f"  {pangalan}"
+                )
+                continue
+
+            mga_linya.append(
+                f"  {pangalan:<16} {deskripsiyon}"
+            )
+
+        return mga_linya
 
     def kumpigurahin(argumento):
         if argumento:

@@ -72,6 +72,19 @@ class Makina:
                 )
             )
             return
+        
+        if (
+            utos.id == "ENTER_CONTEXT"
+            and not self.may_child_context()
+        ):
+            print(
+                self.mensahe(
+                    "command_unavailable",
+                    pangalan=command.pangalan,
+                    konteksto=str(konteksto)
+                )
+            )
+            return
 
         if (
             utos.kailangan_magulang
@@ -113,6 +126,15 @@ class Makina:
                 return
 
         utos.isagawa(command.argumento)
+
+    def may_child_context(self):
+        konteksto = str(self.sesyon.konteksto)
+
+        return bool(
+            self.konteksto_rehistro.mga_papasukan(
+                konteksto
+            )
+        )
 
     def kunin_utos(self, pangalan):
         command_id = self.bokabularyo.kunin_id(pangalan)

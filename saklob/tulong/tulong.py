@@ -41,6 +41,10 @@ class Tulong:
         print(self.makina.mensahe("unknown_help_type"))
 
     def _ipakita_lahat(self, konteksto):
+        may_child_context = (
+            self.makina.may_child_context()
+        )
+
         print(
             self.makina.mensahe(
                 "help_commands_in_context",
@@ -53,6 +57,12 @@ class Tulong:
             self.makina.sesyon.mode,
             self.makina.sesyon.konteksto.magulang is not None
         ):
+            if (
+                utos.id == "ENTER_CONTEXT"
+                and not may_child_context
+            ):
+                continue
+
             metadata = self.makina.kunin_utos_metadata(
                 utos.id
             )
@@ -103,6 +113,19 @@ class Tulong:
             utos.kailangan_magulang
             and self.makina.sesyon.mode == "normal"
             and self.makina.sesyon.konteksto.magulang is None
+        ):
+            print(
+                self.makina.mensahe(
+                    "command_unavailable",
+                    pangalan=pangalan,
+                    konteksto=konteksto
+                )
+            )
+            return
+
+        if (
+            utos.id == "ENTER_CONTEXT"
+            and not self.makina.may_child_context()
         ):
             print(
                 self.makina.mensahe(
